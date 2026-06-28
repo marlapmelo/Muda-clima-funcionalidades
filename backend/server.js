@@ -11,6 +11,11 @@ const redirect_home = require('./routes/home.js');
 
 // Rota para tutoriais
 const redirect_tutoriais = require('../frontend/menu-tutoriais/rota-tutoriais.js');
+// Rota para materiais educativos
+const redirect_materiais_educativos = require('../frontend/menu-materiais-educativos/rota-materiais-educativos.js');    
+// Rota para publicações
+const redirect_publicacoes = require('../frontend/menu-publicacoes/rota-publicacoes.js');
+
 
 //Dependências para o chatbot ===
 const fs = require('fs');
@@ -33,12 +38,18 @@ const municipiosRouter = createMunicipiosRouter(pool);
 const homeRouter = redirect_home();
 // Rota para tutoriais
 const tutoriaisRouter = redirect_tutoriais();
+// Rota para materiais educativos
+const materiais_educativosRouter = redirect_materiais_educativos();
+// Rota para publicações
+const publicacoesRouter = redirect_publicacoes();
+
 
 app.use(municipiosRouter);
 app.use(homeRouter);
+//Rotas para as funcionalidades de tutoriais, materiais educativos e publicações
 app.use(tutoriaisRouter);
-
-
+app.use(materiais_educativosRouter);
+app.use(publicacoesRouter);
 
 
 // Rota para obter todas as UFs
